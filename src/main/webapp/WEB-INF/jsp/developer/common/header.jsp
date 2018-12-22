@@ -16,6 +16,7 @@
 
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/statics/css/custom.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/statics/localcss/appinfolist.css" rel="stylesheet">
     <title>Title</title>
 </head>
 <body class="nav-md">
@@ -24,7 +25,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>APP BMS</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -57,7 +58,7 @@
                             </li>
                             <li><a><i class="fa fa-edit"></i>APP应用管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="form.html">APP维护</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/dev/appinfo/list?pageIndex=1">APP维护</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -166,9 +167,8 @@
         </nav>
     </div>
 </div>
-<!-- /top navigation -->
-
-<!-- page content -->
+        <script src="${pageContext.request.contextPath}/statics/localjs/appinfoadd.js"></script>
+<script src="${pageContext.request.contextPath}/statics/js/jquery.min.js"></script>
 <div class="right_col" role="main">
 </body>
 </html>

@@ -23,7 +23,7 @@ public class AppInfo {
 	private Date creationDate;//创建时间
 	private Integer modifyBy;//更新者
 	private Date modifyDate;//更新时间
-	
+
 	private String statusName;//app状态名称
 	private String flatformName;//app所属平台名称
 	private String categoryLevel3Name;//所属三级分类名称
