@@ -2,6 +2,7 @@ package cn.appsys.controller;
 
 import cn.appsys.mapper.AppCategoryMapper;
 import cn.appsys.mapper.AppinfoMapper;
+import cn.appsys.mapper.AppinfoVersionMapper;
 import cn.appsys.mapper.DataDictionaryMapper;
 import cn.appsys.pojo.*;
 import cn.appsys.tools.Constants;
@@ -25,6 +26,8 @@ public class BackAppinfoController {
     private DataDictionaryMapper dataDictionaryMapper;
     @Autowired
     private AppCategoryMapper appCategoryMapper;
+    @Autowired
+    private AppinfoVersionMapper appinfoVersionMapper;
 
     @RequestMapping(value = "/list")
     public String list(AppInfo appInfo, HttpServletRequest request,
@@ -124,4 +127,31 @@ public class BackAppinfoController {
         }
         return Categorylist;
     }
+    @RequestMapping(value = "check",method = RequestMethod.GET)
+    public String check(HttpServletRequest request){
+        String id=request.getParameter("aid");
+        String vid=request.getParameter("vid");
+        AppInfo appInfo=new AppInfo();
+        AppVersion appVersion=new AppVersion();
+        appInfo=appinfoMapper.getAppinfo(Integer.parseInt(id),null);
+        appVersion=appinfoVersionMapper.getBanben(Integer.parseInt(vid));
+        request.setAttribute("appInfo",appInfo);
+        request.setAttribute("appVersion",appVersion);
+        return "backend/bakappsh";
+    }
+
+
+   @RequestMapping(value = "/Shenghe",method = RequestMethod.POST)
+    public String Shenghe(HttpServletRequest request){
+       AppInfo appInfo=new AppInfo();
+       String id=request.getParameter("id");
+        String status=request.getParameter("status");
+        appInfo.setId(Integer.parseInt(id));
+        appInfo.setStatus(Integer.parseInt(status));
+       appinfoMapper.ShengheUpdate(appInfo);
+       System.out.println(appInfo.getSoftwareName());
+       return "redirect:/bac/appinfo/list";
+    }
+
+
 }

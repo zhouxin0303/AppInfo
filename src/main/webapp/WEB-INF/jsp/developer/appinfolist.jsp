@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="common/header.jsp" %>
+<div class="page-title">
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -150,7 +151,7 @@
                         <td>${app.softwareSize}</td>
                         <td>${app.flatformName}</td>
                         <td>${app.categoryLevel1Name}->${app.categoryLevel2Name}->${app.categoryLevel3Name}</td>
-                        <td>${app.statusName}</td>
+                        <td><span id="appInfoStatus${app.id}">${app.statusName}</span></td>
                         <td>${app.downloads}</td>
                         <td>${app.versionNo}</td>
                         <td>
@@ -163,21 +164,22 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <c:if test="${app.status==2||app.status==5}"> <!--审核通过或者已下架-->
-                                    <li><a href="#">上架</a>
+                                    <li><a class="saleSwichOpen"  appinfoid="${app.id}" appsoftwarename="${app.softwareName}" sale="open" >上架</a>
                                         </c:if>
                                         <c:if test="${app.status==4}"> <!--已上架-->
-                                    <li><a href="#">下架</a>
+                                    <li><a class="saleSwichClose" appinfoid="${app.id}"  appsoftwarename="${app.softwareName}" sale="close">下架</a>
                                         </c:if>
-                                    <li><a href="#">新增版本</a>
+                                    <li><a href="${pageContext.request.contextPath}/dev/appinfo/banben?&appId=${app.id}" id="${app.id}">新增版本</a>
                                     </li>
-                                    <li><a href="#">修改版本</a>
+                                    <li><a class="modifyVersion"  status="${app.status}" statusname="${app.statusName}"
+                                           versionid="${app.versionId}" appinfoid="${app.id}">修改版本</a>
                                     </li>
-                                    <li><a href="#" class="modifyAppInfo" appinfoid="${app.id}"
-                                           status="${app.status}" statusName="${app.status}">修改</a>
+                                    <li><a  class="modifyAppInfo" appinfoid="${app.id}"
+                                           status="${app.status}" statusname="${app.statusName}">修改</a>
                                     </li>
-                                    <li><a href="#">删除</a>
+                                    <li><a class="deleteApp" appsoftwarename="${app.softwareName}" appinfoid="${app.id}">删除</a>
                                     </li>
-                                    <li><a href="#">查看</a>
+                                    <li><a href="${pageContext.request.contextPath}/dev/appinfo/chakan?&id=${app.id}">查看</a>
                                     </li>
                                 </ul>
                             </div>
@@ -198,6 +200,7 @@
             <a href="${pageContext.request.contextPath}/dev/appinfo/list?pageIndex=${pageBean.totalPageCount}">末页</a>
         </div>
         </div>
+    </div>
         <script src="${pageContext.request.contextPath}/statics/localjs/applist.js"></script>
         <script src="${pageContext.request.contextPath}/statics/localjs/appinfolist.js"></script>
         <%@include file="common/footer.jsp" %>

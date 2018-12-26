@@ -104,8 +104,6 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="hidden" name="logoPicPath" value="${appInfo.logoPicPath}" id="logoPicPath">
                 <input type="hidden" name="logoLocPath" value="${appInfo.logoLocPath}" id="logoLocPath">
-                   <%-- <img src="${pageContext.request.contextPath}/${appInfo.logoPicPath}" width="100px">--%>
-                  <%--  <a href="${pageContext.request.contextPath}/dev/appinfo/delfile?&id=${appInfo.id}">删除</a>--%>
                 <div id="uploadfile" style="display: none">
                     <input id="attach"  type="file" class="form-control col-md-7 col-xs-12" name="attach">
                     <p><span style="color:red;font-weight: bold;">*注：1、大小不得超过500k.2、图片格式：jpg、png、jpeg、pneg</span></p>
@@ -117,9 +115,9 @@
         <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
                 <c:if test="${appInfo.status == 3}">
-                    <button id="send" type="submit" name="status" value="1" class="btn btn-success">保存并再次提交审核</button>
+                    <button  type="submit" name="status" value="1" class="btn btn-success">保存并再次提交审核</button>
                 </c:if>
-                <button type="submit" class="btn btn-primary">保存</button>
+                <button type="submit" class="btn btn-primary" name="status"  value="${appInfo.status}">保存</button>
                 <button id="send" type="submit" class="btn btn-success">返回</button>
             </div>
         </div>

@@ -15,6 +15,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input id="APKName" name="APKName" placeholder="请输入AKP名称" required="required" class="form-control col-md-7 col-xs-12">
+                <span id="APKNames"></span>
             </div>
         </div>
         <div class="item form-group">
@@ -99,7 +100,8 @@
         <div class="ln_solid"></div>
         <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-                <button type="submit" class="btn btn-primary">保存</button>
+                <button type="submit" class="btn btn-primary" id="btn_sh">保存并再次提交审核</button>
+                <button type="submit" class="btn btn-primary" id="btn_id">保存</button>
                 <button id="send" type="submit" class="btn btn-success">返回</button>
             </div>
         </div>

@@ -136,7 +136,7 @@
                             <td>${app.statusName}</td>
                             <td>${app.downloads}</td>
                             <td>${app.versionNo}</td>
-                            <td><a href="#" class="btn btn-default">审核</a></td>
+                            <td><a  class="btn btn-default  checkApp" appinfoid="${app.id}" status="${app.status}" versionid="${app.versionId}" statusname="${app.statusName}">审核</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

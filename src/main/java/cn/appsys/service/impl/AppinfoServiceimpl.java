@@ -34,7 +34,8 @@ private AppinfoMapper appinfoMapper;
     }
 
     @Override
-    public List<AppInfo> Chongming(String APKName) {
+    public AppInfo Chongming(String APKName)
+    {
         return appinfoMapper.Chongming(APKName);
     }
 
@@ -67,6 +68,17 @@ private AppinfoMapper appinfoMapper;
     }
 
     @Override
+    public int banbenUpdate(Integer versionId,Integer appId) {
+        return appinfoMapper.banbenUpdate(versionId,appId);
+    }
+
+    @Override
+    public int sxjiaUpdate(AppInfo appInfo)
+    {
+        return appinfoMapper.sxjiaUpdate(appInfo);
+    }
+
+    @Override
     public List<AppInfo> bakgetAll(String softwareName, Integer categoryLevel1, Integer categoryLevel2, Integer categoryLevel3, Integer flatformId, Integer devId, Integer currentpageNo, Integer pageSize) {
         return appinfoMapper.bakgetAll(softwareName,categoryLevel1,
                 categoryLevel2,categoryLevel3,flatformId,devId,currentpageNo,pageSize);
@@ -76,6 +88,11 @@ private AppinfoMapper appinfoMapper;
     public List<AppInfo> bakgetCount(String softwareName, Integer categoryLevel1, Integer categoryLevel2, Integer categoryLevel3, Integer flatformId, Integer devId) {
         return appinfoMapper.bakgetCount(softwareName,categoryLevel1,categoryLevel2,
                 categoryLevel3,flatformId,devId);
+    }
+
+    @Override
+    public int ShengheUpdate(AppInfo appInfo) {
+        return appinfoMapper.ShengheUpdate(appInfo);
     }
 
 

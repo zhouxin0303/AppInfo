@@ -106,7 +106,6 @@ VALUES(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareS
         update app_info
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
             <if test="softwareName != null">softwareName=#{softwareName},</if>
-            <!-- <if test="APKName != null">APKName=#{APKName},</if> -->
             <if test="supportROM != null">supportROM=#{supportROM},</if>
             <if test="interfaceLanguage != null">interfaceLanguage=#{interfaceLanguage},</if>
             <if test="updateDate != null">updateDate=#{updateDate},</if>
@@ -124,6 +123,22 @@ VALUES(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareS
             <if test="modifyDate != null">modifyDate=#{modifyDate},</if>
         </trim>
     </update>
+    <update id="banbenUpdate" parameterType="AppInfo">
+         UPDATE app_info SET versionId=#{versionId} WHERE id=#{id}
+    </update>
+     <update id="sxjiaUpdate" parameterType="AppInfo">
+         UPDATE app_info SET status=#{status},modifyBy=#{modifyBy},offSaleDate=#{offSaleDate} where id=#{id}
+</update>
+<delete id="deletexinxi" parameterType="Integer">
+    DELETE FROM app_info  WHERE id=#{id}
+</delete>
+
+
+
+
+
+
+
 
 
 
@@ -163,9 +178,7 @@ VALUES(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareS
         <if test="flatformId!=null">
             and a.flatformId=#{flatformId}
         </if>
-        <if test="devId!=null">
-            and a.devId=#{devId}
-        </if>
+
         order by creationDate DESC limit #{currentpageNo},#{pageSize}
     </select>
 
@@ -186,9 +199,9 @@ VALUES(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareS
         <if test="flatformId != null">
             and a.flatformId = #{flatformId}
         </if>
-        <if test="devId != null">
-            and a.devId = #{devId}
-        </if>
-
     </select>
+
+    <update id="ShengheUpdate" parameterType="AppInfo">
+        UPDATE app_info SET status=#{status} WHERE id=#{id}
+    </update>
 </mapper>
